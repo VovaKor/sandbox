@@ -1,5 +1,8 @@
-package com.korobko;
+package com.korobko.repositories;
 
+import com.korobko.models.Operation;
+
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -8,13 +11,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class HistoryRepository {
     private static final HistoryRepository INSTANCE = new HistoryRepository();
-    private Map<Long, Operation> operations = new ConcurrentHashMap<>();
+    private Map<Long, List<Operation>> operations = new ConcurrentHashMap<>();
     private HistoryRepository() {}
-    public HistoryRepository getInstance() {
+    public static HistoryRepository getInstance() {
         return INSTANCE;
     }
 
-    public Map<Long, Operation> getOperations() {
+    public Map<Long, List<Operation>> getOperations() {
         return operations;
     }
 }
